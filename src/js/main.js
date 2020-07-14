@@ -9,8 +9,8 @@ const App = () => {
   const [count, setCount] = useState(0);
 
   useEffect(() => {
-    setInterval(function () {
-      setCount((count) => count + 1);
+    setInterval(function() {
+      setCount(count => count + 1);
     }, 3000);
   }, []);
 
@@ -22,17 +22,6 @@ const App = () => {
   );
 };
 
-// class App extends React.Component {
-//   render() {
-//     return (
-//       <div>
-//         Your App injected to DOM correctly!  carajo
-//         <Button />
-//       </div>
-//     )
-//   }
-// }
-
 // Message Listener function
 chrome.runtime.onMessage.addListener((request, sender, response) => {
   // If message is injectApp
@@ -40,7 +29,7 @@ chrome.runtime.onMessage.addListener((request, sender, response) => {
     // Inject our app to DOM and send response
     injectApp();
     response({
-      startedExtension: true,
+      startedExtension: true
     });
   }
 });

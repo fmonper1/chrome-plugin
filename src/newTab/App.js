@@ -32,7 +32,7 @@ const App = () => {
   return (
     <div className="modal-buttons">
       <button onClick={getQuote}>dsfasdfadsfds</button>
-      <div>{date}</div>
+      <div className="m-8">{date}</div>
       {list.map((item, key) => (
         <p key={key}>lkdsjlkfjlksdj</p>
       ))}

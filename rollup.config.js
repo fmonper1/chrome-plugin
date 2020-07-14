@@ -10,6 +10,9 @@ import {
   simpleReloader
 } from "rollup-plugin-chrome-extension";
 import replace from "rollup-plugin-replace";
+import postcss from "rollup-plugin-postcss";
+import scss from "rollup-plugin-scss";
+const isProduction = process.env.NODE_ENV === "production";
 
 export default {
   input: "src/manifest.json",
@@ -38,6 +41,7 @@ export default {
         ]
       ]
     }),
+
     resolve(),
     commonjs({
       include: "node_modules/**"
