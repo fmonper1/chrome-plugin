@@ -17,10 +17,10 @@ window.addEventListener("load", () => {
   // Show id of cards in Trello board
   let cards = document.getElementsByClassName("list-card");
   [...cards].forEach(card => {
-    // let shortId = card.querySelector(".card-short-id");
     // shortId.classList.remove("hide");
     // card.prepend("hola");
     card.addEventListener("click", () => {
+      let shortId = card.querySelector(".card-short-id");
       lastCardId = shortId.innerHTML;
     });
   });

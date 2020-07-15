@@ -15,6 +15,20 @@ window.addEventListener("load", () => {
     card.addEventListener("click", () => {
       // lastCardId = shortId.innerHTML;
       alert(window.location.href);
+      let portalContainer = document.getElementsByClassName(
+        "atlaskit-portal-container"
+      )[0];
+      console.log("adding btn");
+
+      let btn = document.createElement("div");
+      btn.setAttribute(
+        "style",
+        "display: block;position: absolute; top: 0; left: 0; z-index: 999;"
+      );
+      btn.setAttribute("id", "added-button");
+      const text = document.createTextNode("add to worklogs"); // Create a text node
+      btn.appendChild(text);
+      portalContainer.append(btn);
     });
   });
 
@@ -25,21 +39,37 @@ window.addEventListener("load", () => {
   //   ReactDOM.render(<TrelloButton lastCardId={lastCardId} />, newDiv);
   // }
   //
-  // // Append log-hours button to window view of card
-  // let windowWrapper = document.querySelector(".window-wrapper");
+  // Append log-hours button to window view of card
+  let portalParent = document.getElementsByClassName(
+    "atlaskit-portal-container"
+  )[0];
+
   // const myEfficientFn = debounce(function() {
   //   console.log("windowchange");
-  //   let header = windowWrapper.querySelector(".window-header");
+  //   let header = portalContainer.querySelector(".window-header");
   //   if (header !== null && lastCardId) {
   //     injectApp(header);
   //   }
   // }, 500);
-  //
-  // // Observe changed in the window wrapper to see if a window opened
-  // new MutationObserver(function(mutations, observer) {
-  //   myEfficientFn();
-  // }).observe(windowWrapper, {
-  //   childList: true,
-  //   subtree: false
-  // });
+
+  // Observe changed in the window wrapper to see if a window opened
+  new MutationObserver(function(mutations, observer) {
+    for (let index = 0; index < mutations.length; index++) {
+      let mutation = mutations[index];
+
+      if (mutation.type === "childList" && mutation.removedNodes.length) {
+        console.log("removing btn");
+
+        let button = document.getElementById("added-button");
+        button !== null ? button.remove() : null;
+
+        break;
+      }
+    }
+    console.log(mutations);
+    // myEfficientFn();
+  }).observe(portalParent, {
+    childList: true,
+    subtree: false
+  });
 });
