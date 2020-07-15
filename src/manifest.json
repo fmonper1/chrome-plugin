@@ -22,7 +22,15 @@
   "content_scripts": [
     {
       "matches": ["http://*/*", "https://*/*"],
-      "js": ["js/main.js"]
+      "js": ["content/main.js"]
+    } ,
+    {
+      "matches": ["https://trello.com/*"],
+      "js": ["content/trello.js"]
+    },
+    {
+      "matches": ["https://*.atlassian.net/*"],
+      "js": ["content/jira.js"]
     }
   ],
 

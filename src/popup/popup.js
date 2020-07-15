@@ -1,7 +1,7 @@
 // import App from "./App.js";
 import React from "react";
 import ReactDOM from "react-dom";
-import App from "../js/App";
+import App from "../content/App";
 
 window.onload = () => {
   const $startButton = document.querySelector(".start");
